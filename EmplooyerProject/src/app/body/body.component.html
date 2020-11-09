@@ -1,0 +1,146 @@
+<div class="card mb-3 " style="max-width: 100%;">
+    <div class="row no-gutters">
+      <div class="col-md-5">
+        <div class="card-body shadow">
+          <!-- Default form subscription "-->
+<form class="text-center border border-light p-5" (ngSubmit)="onSubmit()" >
+
+  <!--<p class="h4 mb-4">Add Employee</p>-->
+
+  <div class="circular--portrait mb-4">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT7R1-iBTMTHEyl99YywmKIg6nL7a2vV24bqQ&usqp=CAU" />
+  </div>
+
+  <!-- FistName -->
+  <input type="text" id="FistName" class="form-control mb-4" placeholder="FistName" required [(ngModel)]="emp.firstName" name="firstName">
+  <!-- LastName -->
+  <input type="text" id="lastName" class="form-control mb-4" placeholder="LastName" required [(ngModel)]="emp.lastName" name="lastName">
+
+  <!-- Email -->
+  <input type="email" id="emailId" class="form-control mb-4" placeholder="E-mail" required [(ngModel)]="emp.emailId" name="emailId">
+
+  <!-- Age -->
+  <input type="text" id="age" class="form-control mb-4" placeholder="Age" required [(ngModel)]="emp.age" name="age">
+
+  <input type="hidden" class="form-control" id="city" required [(ngModel)]="emp.city" name="city"  value="{{selectedValue}}">
+
+      <!-- City Menu -->
+      <select class="browser-default custom-select mb-4" (change)="selectChangeHandler($event)">
+          <option  selected disabled>City</option>
+          <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
+      </select>
+      
+  <!-- Sign in button -->
+  <button class="btn btn-dark btn-block" type="submit">Add Employee</button>
+  
+  
+
+</form>
+<!-- Default form subscription -->
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="card-body shadow">
+          <!--<h5 class="card-title pos">List of employees</h5>-->
+          <div class="contentcontainer med left" style="margin-left: 560px;">
+          <form class="form-inline my-2 my-lg-0 b">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search By City" [(ngModel)]="employeeCity" (keyup)="onKey($event)">
+            <button class="btn btn-light btn-outline-dark my-2 my-sm-0" style="border-radius: 12px;"type="button"  (click)="SearchEmp()">Search</button>
+          </form></div><br>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">FistName</th>
+                <th scope="col">LastName</th>
+                <th scope="col">Email</th>
+                <th scope="col">Age</th>
+                <th scope="col">City</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+        
+              <tr *ngFor="let emp of ListEmp | paginate: { itemsPerPage: 7, currentPage: p }">
+                <td>{{ emp.firstName }}</td>
+                <td> {{ emp.lastName }}</td>
+                <td>{{ emp.emailId }}</td>
+                <td>{{ emp.age }}</td>
+                <td>{{ emp.city }}</td>
+                <td>
+                  <span class="fa-stack">
+                    <i class="fa fa-trash" (click)="deleteEmp(emp.id)"></i>
+                  </span>&nbsp;&nbsp;&nbsp;
+                  <span class="fa-stack">
+                    <i class="fa fa-pencil" data-toggle="modal" data-target="#exampleModalCenter" (click)="updateEmp(emp.id)"></i>
+                  </span>&nbsp;&nbsp;
+              </td>
+              </tr>
+              
+            </tbody>
+          </table>
+          
+        <div class="card-footer ">
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+        
+          <!--<h5 class="card-title pos">List of employees</h5>-->
+        
+          
+        
+              
+        </div>
+
+          
+        
+      </div>
+
+    </div>
+  </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title " style="margin-left: 30%;" id="exampleModalLongTitle">Edit Employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <!-- Default form subscription "-->
+<form class="text-center border border-light p-5" >
+
+  <!--<p class="h4 mb-4">Add Employee</p>-->
+
+  <!-- FistName -->
+  <input type="text" id="FistName" class="form-control mb-4" placeholder="FistName" required [(ngModel)]="employee.firstName" name="firstName">
+  <!-- LastName -->
+  <input type="text" id="lastName" class="form-control mb-4" placeholder="LastName" required [(ngModel)]="employee.lastName" name="lastName">
+
+  <!-- Email -->
+  <input type="email" id="emailId" class="form-control mb-4" placeholder="E-mail" required [(ngModel)]="employee.emailId" name="emailId">
+
+  <!-- Age -->
+  <input type="text" id="age" class="form-control mb-4" placeholder="Age" required [(ngModel)]="employee.age" name="age">
+
+  <input type="hidden" class="form-control" id="city" required [(ngModel)]="employee.city" name="city"  value="{{selectedValue2}}">
+
+      <!-- City Menu -->
+      <select class="browser-default custom-select mb-4" (change)="selectChangeHandler2($event)">
+          <option  selected disabled>City</option>
+          <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
+      </select>
+      
+  <!-- Sign in button -->
+  <button class="btn btn-dark btn-block" type="submit" data-dismiss="modal" (click)="SubmitEmp()">Edit Employee</button>
+  
+  
+
+</form>
+<!-- Default form subscription -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

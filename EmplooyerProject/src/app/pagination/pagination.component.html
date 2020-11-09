@@ -1,0 +1,35 @@
+<!-- Default form subscription "-->
+<form class="text-center border border-light p-5" (ngSubmit)="onSubmit()" >
+
+  <!--<p class="h4 mb-4">Add Employee</p>-->
+
+  <div class="circular--portrait mb-4">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT7R1-iBTMTHEyl99YywmKIg6nL7a2vV24bqQ&usqp=CAU" />
+  </div>
+
+  <!-- FistName -->
+  <input type="text" id="FistName" class="form-control mb-4" placeholder="FistName" required [(ngModel)]="emp.firstName" name="firstName">
+  <!-- LastName -->
+  <input type="text" id="lastName" class="form-control mb-4" placeholder="LastName" required [(ngModel)]="emp.lastName" name="lastName">
+
+  <!-- Email -->
+  <input type="email" id="emailId" class="form-control mb-4" placeholder="E-mail" required [(ngModel)]="emp.emailId" name="emailId">
+
+  <!-- Age -->
+  <input type="text" id="age" class="form-control mb-4" placeholder="Age" required [(ngModel)]="emp.age" name="age">
+
+  <input type="hidden" class="form-control" id="city" required [(ngModel)]="emp.city" name="city"  value="{{selectedValue}}">
+
+      <!-- City Menu -->
+      <select class="browser-default custom-select mb-4" (change)="selectChangeHandler($event)">
+          <option  selected disabled>City</option>
+          <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
+      </select>
+      
+  <!-- Sign in button -->
+  <button class="btn btn-dark btn-block" type="submit">Sign in</button>
+  
+  
+
+</form>
+<!-- Default form subscription -->
