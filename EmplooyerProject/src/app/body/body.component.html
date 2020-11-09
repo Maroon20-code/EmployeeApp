@@ -12,7 +12,8 @@
   </div>
 
   <!-- FistName -->
-  <input type="text" id="FistName" class="form-control mb-4" placeholder="FistName" required [(ngModel)]="emp.firstName" name="firstName">
+  <input type="text" id="firstName" class="form-control mb-4 " placeholder="firstName" required [(ngModel)]="emp.firstName" name="firstName" >
+
   <!-- LastName -->
   <input type="text" id="lastName" class="form-control mb-4" placeholder="LastName" required [(ngModel)]="emp.lastName" name="lastName">
 
@@ -20,13 +21,13 @@
   <input type="email" id="emailId" class="form-control mb-4" placeholder="E-mail" required [(ngModel)]="emp.emailId" name="emailId">
 
   <!-- Age -->
-  <input type="text" id="age" class="form-control mb-4" placeholder="Age" required [(ngModel)]="emp.age" name="age">
+  <input type="number" id="age" class="form-control mb-4" placeholder="Age" required [(ngModel)]="emp.age" name="age">
 
-  <input type="hidden" class="form-control" id="city" required [(ngModel)]="emp.city" name="city"  value="{{selectedValue}}">
+  <input type="hidden" class="form-control" id="city2" required  name="city2"  value="{{selectedValue}}">
 
       <!-- City Menu -->
-      <select class="browser-default custom-select mb-4" (change)="selectChangeHandler($event)">
-          <option  selected disabled>City</option>
+      <select class="browser-default custom-select mb-4" required id="city" name="city"  [(ngModel)]="emp.city" (change)="selectChangeHandler($event)">
+          
           <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
       </select>
       

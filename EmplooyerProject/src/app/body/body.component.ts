@@ -21,10 +21,10 @@ export class BodyComponent implements OnInit {
   employeeCity="";
   p: number = 1;
   Id:number;
+  
   constructor(private serviceEmp : EmployeeService,private toastr: ToastrService) { }
 
   ngOnInit(): void {
-
     this.reloadData();
     
   }
@@ -35,7 +35,7 @@ export class BodyComponent implements OnInit {
     this.toastr.error( 'Employee removed successfully!');
   }
   editSuccess() {
-    this.toastr.warning( 'Employee edited successfully!');
+    this.toastr.info( 'Employee edited successfully!');
   }
 
   onKey(event:any){
