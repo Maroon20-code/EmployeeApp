@@ -182,3 +182,54 @@ This warning can be switched off on the Team > Git > Confirmations and Warnings 
 
 !ENTRY org.eclipse.ui 2 2 2020-11-09 12:23:35.461
 !MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:16.960
+!MESSAGE Entering DelegatingStreamConnectionProvider()
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:16.962
+!MESSAGE DelegatingStreamConnectionProvider classloader = org.eclipse.osgi.internal.loader.EquinoxClassLoader@452a7945[org.springframework.tooling.boot.ls:1.22.0.202009151440(id=973)]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:16.984
+!MESSAGE SpringBootLanguageServer exists!
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:17.040
+!MESSAGE Instantiating ReusableClasspathListenerHandler
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.041
+!MESSAGE Boot LS startup time from start to initialized: 3051ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.330
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.MDmfeviuisBatched = true
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.333
+!MESSAGE Creating project sorter...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.335
+!MESSAGE Creating project sorter... DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.338
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.342
+!MESSAGE Scheduling initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.343
+!MESSAGE Scheduling initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.344
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.344
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.MDmfeviu => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.354
+!MESSAGE classpath=68 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.358
+!MESSAGE buffering callback sts4.classpath.MDmfeviu springboot-mongodb-crud-example false 68
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.359
+!MESSAGE executing callback sts4.classpath.MDmfeviu 1 batched events
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-11-09 13:47:20.401
+!MESSAGE executing callback sts4.classpath.MDmfeviu SUCCESS [done]
