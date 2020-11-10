@@ -23,11 +23,11 @@
   <!-- Age -->
   <input type="number" id="age" class="form-control mb-4" placeholder="Age" required [(ngModel)]="emp.age" name="age">
 
-  <input type="hidden" class="form-control" id="city2" required  name="city2"  value="{{selectedValue}}">
+  <input type="hidden" class="form-control" id="city" required  name="city"  [(ngModel)]="emp.city"  value="{{selectedValue}}">
 
       <!-- City Menu -->
-      <select class="browser-default custom-select mb-4" required id="city" name="city"  [(ngModel)]="emp.city" (change)="selectChangeHandler($event)">
-          
+      <select class="browser-default custom-select mb-4" required id="city2" name="city2" (change)="selectChangeHandler($event)">
+          <option selected disabled > city </option>
           <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
       </select>
       
@@ -48,10 +48,10 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search By City" [(ngModel)]="employeeCity" (keyup)="onKey($event)">
             <button class="btn btn-light btn-outline-dark my-2 my-sm-0" style="border-radius: 12px;"type="button"  (click)="SearchEmp()">Search</button>
           </form></div><br>
-          <table class="table">
+          <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">FistName</th>
+                <th scope="col">FirstName</th>
                 <th scope="col">LastName</th>
                 <th scope="col">Email</th>
                 <th scope="col">Age</th>
@@ -128,7 +128,7 @@
   <input type="hidden" class="form-control" id="city" required [(ngModel)]="employee.city" name="city"  value="{{selectedValue2}}">
 
       <!-- City Menu -->
-      <select class="browser-default custom-select mb-4" (change)="selectChangeHandler2($event)">
+      <select class="browser-default custom-select mb-4"  (change)="selectChangeHandler2($event)">
           <option  selected disabled>City</option>
           <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
       </select>
