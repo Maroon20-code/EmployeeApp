@@ -21,6 +21,7 @@ export class BodyComponent implements OnInit {
   employeeCity="";
   p: number = 1;
   Id:number;
+  exist:boolean=false;
   
   constructor(private serviceEmp : EmployeeService,private toastr: ToastrService) { }
 
@@ -47,9 +48,11 @@ export class BodyComponent implements OnInit {
     
   }
   SearchEmp(){
+
     if(this.employeeCity.length == 0) {
       this.reloadData();
-    }else if (this.employeeCity != ''){
+    }
+    else if (this.employeeCity != ''){
 
       this.searchData();
 
@@ -59,12 +62,26 @@ export class BodyComponent implements OnInit {
     }
   }
   searchData(){
-    this.serviceEmp.EmpByCity(this.employeeCity).subscribe((res) => {
-      this.ListEmp = res  as Employee[];
-      console.log(this.ListEmp);
-    }, error => {
-      console.log(error);
-    });
+    for (let i=0;i<this.ListEmp.length;i++){
+      if(this.employeeCity == this.ListEmp[i].city) {
+        this.exist = true;
+        break;
+      }
+    }
+
+    if(this.exist){
+      this.serviceEmp.EmpByCity(this.employeeCity).subscribe((res) => {
+        this.ListEmp = res  as Employee[];
+        console.log(this.ListEmp);
+      }, error => {
+        console.log(error);
+      });
+    } 
+    else {
+      $("#search").val("");
+      this.reloadData();
+    }
+
   }
 
   newEmployee(): void {
@@ -102,16 +119,19 @@ export class BodyComponent implements OnInit {
       , error => console.log(error));
     //this.employee = new Employee();
     this.newEmployee();
-    
-    
+       
   }
+
   selectChangeHandler(event:any){
     this.selectedValue = event.target.value;
+    this.selectedValue =this.selectedValue.substring(3);
+    console.log(this.selectedValue);
     //this.emp.city=this.selectedValue;
     
   }
   selectChangeHandler2(event:any){
     this.selectedValue2 = event.target.value;
+    this.selectedValue2 =this.selectedValue2.substring(3);
     //this.emp.city=this.selectedValue;
     
   }

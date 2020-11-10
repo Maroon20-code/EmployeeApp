@@ -3,36 +3,60 @@
       <div class="col-md-5">
         <div class="card-body shadow">
           <!-- Default form subscription "-->
-<form class="text-center border border-light p-5" (ngSubmit)="onSubmit()" >
+<form class="text-center border border-light p-5" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  novalidate>
 
   <!--<p class="h4 mb-4">Add Employee</p>-->
 
   <div class="circular--portrait mb-4">
       <img src="../../assets/images.jpg" />
   </div>
-
+  <div class="form-group col-14">
   <!-- FistName -->
-  <input type="text" id="firstName" class="form-control mb-4 " placeholder="firstName" required [(ngModel)]="emp.firstName" name="firstName" >
-
+  <input type="text" id="firstName" class="form-control mb-4 " placeholder="firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required [(ngModel)]="emp.firstName" name="firstName" >
+  <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+    <div *ngIf="firstName.errors.required">First Name is required</div>
+  </div>  
+  </div>
+  <div class="form-group col-14">
   <!-- LastName -->
-  <input type="text" id="lastName" class="form-control mb-4" placeholder="LastName" required [(ngModel)]="emp.lastName" name="lastName">
-
+  <input type="text" id="lastName" class="form-control mb-4" placeholder="LastName" required #LastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && LastName.invalid }" [(ngModel)]="emp.lastName" name="lastName">
+  <div *ngIf="f.submitted && LastName.invalid" class="invalid-feedback">
+    <div *ngIf="LastName.errors.required">Last Name  is required</div>
+  </div> 
+</div>
+<div class="form-group col-14">
   <!-- Email -->
-  <input type="email" id="emailId" class="form-control mb-4" placeholder="E-mail" required [(ngModel)]="emp.emailId" name="emailId">
+  <input type="email" id="emailId" class="form-control mb-4" placeholder="E-mail" required #emailId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && emailId.invalid }" [(ngModel)]="emp.emailId" name="emailId">
+  <div *ngIf="f.submitted && emailId.invalid" class="invalid-feedback">
+    <div *ngIf="emailId.errors.required">Email  is required</div>
+  </div> 
+</div>
+<div class="form-group col-14">
+  
+    <!-- Age -->
+    <input type="number" id="age" class="form-control mb-4" placeholder="Age" required #age="ngModel" [ngClass]="{ 'is-invalid': f.submitted && age.invalid }" [(ngModel)]="emp.age" name="age">
+   <div *ngIf="f.submitted && age.invalid" class="invalid-feedback">
+    <div *ngIf="age.errors.required">Age  is required</div>
+  </div> 
+</div>
 
-  <!-- Age -->
-  <input type="number" id="age" class="form-control mb-4" placeholder="Age" required [(ngModel)]="emp.age" name="age">
 
-  <input type="hidden" class="form-control" id="city" required  name="city"  [(ngModel)]="emp.city"  value="{{selectedValue}}">
-
+  <input type="hidden" class="form-control" id="city2" required  name="city2"    value="{{selectedValue}}">
+  <div class="form-group col-14">
       <!-- City Menu -->
-      <select class="browser-default custom-select mb-4" required id="city2" name="city2" (change)="selectChangeHandler($event)">
-          <option selected disabled > city </option>
-          <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
+      <select class="browser-default custom-select mb-4" #city="ngModel" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" required id="city" name="city" [(ngModel)]="emp.city" (change)="selectChangeHandler($event)">
+         
+        <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
       </select>
-      
+      <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+        <div *ngIf="city.errors.required">City is required</div>
+    </div>
+  </div>
+  <div class="text-center">   
   <!-- Sign in button -->
-  <button class="btn btn-dark btn-block" type="submit">Add Employee</button>
+  <button class="btn btn-dark " type="submit">Add Employee</button>&nbsp;
+  <button class="btn btclass" type="reset">Cancel</button>
+  </div>
   
   
 
@@ -44,10 +68,11 @@
         <div class="card-body shadow">
           <!--<h5 class="card-title pos">List of employees</h5>-->
           <div class="contentcontainer med left" style="margin-left: 560px;">
-          <form class="form-inline my-2 my-lg-0 b">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search By City" [(ngModel)]="employeeCity" (keyup)="onKey($event)">
+          <form class="form-inline my-2 my-lg-0 b" name="formsearch">
+            <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search By City"  [(ngModel)]="employeeCity" (keyup)="onKey($event)">
             <button class="btn btn-light btn-outline-dark my-2 my-sm-0" style="border-radius: 12px;"type="button"  (click)="SearchEmp()">Search</button>
-          </form></div><br>
+          </form>
+        </div><br>
           <table class="table table-striped">
             <thead class="thead-dark">
               <tr>
@@ -115,21 +140,21 @@
   <!--<p class="h4 mb-4">Add Employee</p>-->
 
   <!-- FistName -->
-  <input type="text" id="FistName" class="form-control mb-4" placeholder="FistName" required [(ngModel)]="employee.firstName" name="firstName">
+  <input type="text" id="FistName1" class="form-control mb-4" placeholder="FistName" required [(ngModel)]="employee.firstName" name="firstName1">
   <!-- LastName -->
-  <input type="text" id="lastName" class="form-control mb-4" placeholder="LastName" required [(ngModel)]="employee.lastName" name="lastName">
+  <input type="text" id="lastName1" class="form-control mb-4" placeholder="LastName" required [(ngModel)]="employee.lastName" name="lastName1">
 
   <!-- Email -->
-  <input type="email" id="emailId" class="form-control mb-4" placeholder="E-mail" required [(ngModel)]="employee.emailId" name="emailId">
+  <input type="email" id="emailId1" class="form-control mb-4" placeholder="E-mail" required [(ngModel)]="employee.emailId" name="emailId1">
 
   <!-- Age -->
-  <input type="text" id="age" class="form-control mb-4" placeholder="Age" required [(ngModel)]="employee.age" name="age">
+  <input type="text" id="age1" class="form-control mb-4" placeholder="Age" required [(ngModel)]="employee.age" name="age1">
 
-  <input type="hidden" class="form-control" id="city" required [(ngModel)]="employee.city" name="city"  value="{{selectedValue2}}">
+  <input type="hidden" class="form-control" id="city1"  name="city1"  value="{{selectedValue2}}">
 
       <!-- City Menu -->
-      <select class="browser-default custom-select mb-4"  (change)="selectChangeHandler2($event)">
-          <option  selected disabled>City</option>
+      <select class="browser-default custom-select mb-4" required [(ngModel)]="employee.city" (change)="selectChangeHandler2($event)">
+          
           <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
       </select>
       
