@@ -24,8 +24,8 @@ export class EmployeeService {
   EmpById(id){
     return this.http.get(environment.baseUrl+'/'+id);
   }
-  updateEmployee(id,Emp): Observable<Object>{
-    return this.http.put(environment.baseUrl+'/'+id,Emp);
+  updateEmployee(Emp) {
+    return this.http.put(environment.baseUrl+'/'+Emp.id,Emp);
   }
   EmpByCity(city){
     return this.http.get(environment.baseUrl2+'/'+city);

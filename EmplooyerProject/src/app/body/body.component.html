@@ -3,7 +3,7 @@
       <div class="col-md-5">
         <div class="card-body shadow">
           <!-- Default form subscription "-->
-<form class="text-center border border-light p-5" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  novalidate>
+<form class="text-center border border-light p-5" name="form" (ngSubmit)="f.form.valid && save(f)" #f="ngForm"  novalidate>
 
   <!--<p class="h4 mb-4">Add Employee</p>-->
 
@@ -135,12 +135,12 @@
       <div class="modal-body">
         <div class="card-body">
           <!-- Default form subscription "-->
-<form class="text-center border border-light p-5" >
+<form class="text-center border border-light p-5"  #form="ngForm">
 
   <!--<p class="h4 mb-4">Add Employee</p>-->
 
   <!-- FistName -->
-  <input type="text" id="FistName1" class="form-control mb-4" placeholder="FistName" required [(ngModel)]="employee.firstName" name="firstName1">
+  <input type="text" id="FistName1" class="form-control mb-4" placeholder="FirstName" required [(ngModel)]="employee.firstName" name="firstName1">
   <!-- LastName -->
   <input type="text" id="lastName1" class="form-control mb-4" placeholder="LastName" required [(ngModel)]="employee.lastName" name="lastName1">
 
@@ -150,16 +150,13 @@
   <!-- Age -->
   <input type="text" id="age1" class="form-control mb-4" placeholder="Age" required [(ngModel)]="employee.age" name="age1">
 
-  <input type="hidden" class="form-control" id="city1"  name="city1"  value="{{selectedValue2}}">
-
       <!-- City Menu -->
-      <select class="browser-default custom-select mb-4" required [(ngModel)]="employee.city" (change)="selectChangeHandler2($event)">
-          
-          <option  *ngFor="let city of ListCity"  [ngValue]="city" >{{ city}}</option>   
+      <select class="browser-default custom-select mb-4" required   [(ngModel)]="employee.city" id="City" name="City1"  (change)="selectChangeHandler2($event)">  
+          <option  *ngFor="let city of ListCity" [ng-value]="employee.city">{{ city }}</option>   
       </select>
       
   <!-- Sign in button -->
-  <button class="btn btn-dark btn-block" type="submit" data-dismiss="modal" (click)="SubmitEmp()">Edit Employee</button>
+  <button class="btn btn-dark btn-block" type="button" data-dismiss="modal"  (click)="SubmitEmp()">Edit Employee</button>
   
   
 

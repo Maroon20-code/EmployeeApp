@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Employee } from '../models/Employee';
@@ -95,30 +96,37 @@ export class BodyComponent implements OnInit {
     .subscribe(data => {
       console.log(data)
       this.employee = data as Employee;
+      //$("#City").val(this.employee.city.toString()).change();
     }, error => console.log(error));  
   }
+
   SubmitEmp() {
-    this.serviceEmp.updateEmployee(this.Id, this.employee)
-    .subscribe(data => {console.log(data);
-    this.reloadData();
-  }
-    , error => console.log(error));
+
+    //console.log( this.employee);
+    this.serviceEmp.updateEmployee(this.employee)
+    .subscribe(data => {console.log(data) , error => console.log(error)
+  });
   this.employee = new Employee();
   this.editSuccess();
-    //this.updateEmp(this.Id);    
+  this.reloadData();
+    //this.updateEmp(this.Id);
+    //console.log( this.employee);
+    //console.log(empl.form.value);
   }
 
 
-  save() {
-    this.emp.city=this.selectedValue;
+  save(emp:NgForm) {
+    //this.emp.city=this.selectedValue;
     this.serviceEmp.addEmployee(this.emp)
       .subscribe(data => {console.log(data);  
         this.reloadData();
-        this.showSuccess();  
+        this.newEmployee();
+        this.showSuccess(); 
+        this.submitted = true;
     }
       , error => console.log(error));
+      emp.resetForm(); 
     //this.employee = new Employee();
-    this.newEmployee();
        
   }
 
@@ -132,15 +140,16 @@ export class BodyComponent implements OnInit {
   selectChangeHandler2(event:any){
     this.selectedValue2 = event.target.value;
     this.selectedValue2 =this.selectedValue2.substring(3);
-    //this.emp.city=this.selectedValue;
+    //this.employee.city=this.selectedValue;
     
   }
 
-  onSubmit() {    
+  /*onSubmit() {    
     this.submitted = true;
     this.save();  
     
-  }
+    
+  }*/
 
 
   reloadData(){
